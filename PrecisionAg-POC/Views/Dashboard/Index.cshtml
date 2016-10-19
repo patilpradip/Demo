@@ -1,0 +1,49 @@
+﻿@{
+    Layout = null;
+}
+
+<link href="~/Content/Dashboard/Index.css" rel="stylesheet" />
+<script src="https://maps.google.com/maps/api/js?libraries=placeses,visualization,drawing,geometry,places"></script>
+<script src="~/Scripts/Angular/angular.js"></script>
+<script src="~/Scripts/Angular/angular-sanitize.js"></script>
+<script src="~/Scripts/Dashboard/DraggableWidgets.js"></script>
+<script src="~/Scripts/Dashboard/Index.js"></script>
+<script src="~/Scripts/Angular/ng-map.min.js"></script>
+
+
+<div id="mainDiv">
+    <div ng-app="precisionag">
+        <div ng-controller="DashboardController" class="row">
+            <div class="row">
+                <div class="col-md-2"></div>
+                <div class="col-md-2"><a href="" ng-click="GoToMap();">Go to map</a></div>
+            </div>
+            <div class="row">
+                <div drag-group="widgets" class="col-md-12">
+                    @*<div ng-repeat="widget in widgets" draggable-widget="widget" draggable-widget-callback="moveWidget" class="{{widget.class}} col-md-6">
+                            <div draggable-widget-handle>Title</div>
+                            <p>{{widget.title}}</p>
+                        </div>*@
+                </div>
+            </div>
+            <div class="row">
+                <div>
+                    <h3 style="color:black">Map</h3>
+                </div>
+                <div>
+                    <ng-map zoom="12" center="28.623457, 77.196452"
+                            map-type-id="ROADMAP"
+                            street-view-control-options="{position: 'LEFT_CENTER'}">
+                        <drawing-manager on-overlaycomplete="onMapOverlayCompleted()"
+                                         drawing-control-options="{position: 'TOP_CENTER',drawingModes:['polygon','marker']}"
+                                         drawingControl="true"
+                                         drawingMode="null"
+                                         rectangleOptions="{fillColor:'red'}"
+                                         circleOptions="{fillColor: '#FFFF00',fillOpacity: 1,strokeWeight: 5,clickable: false,zIndex: 1,editable: true}">
+                        </drawing-manager>
+                        <shape path="{{paths}}" name="polygon"></shape>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
