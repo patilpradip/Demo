@@ -19,5 +19,10 @@ namespace PrecisionAg_POC
         {
 
         }
+
+        public void test1()
+        {
+
+        }
     }
 }
