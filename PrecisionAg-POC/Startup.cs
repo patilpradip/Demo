@@ -22,7 +22,7 @@ namespace PrecisionAg_POC
 
         public void test1()
         {
-
+            System.Console.WriteLine("");
         }
     }
 }
